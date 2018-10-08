@@ -1,6 +1,6 @@
-# React Starter
+# Escape Room Digital Signage
 
-> This repo contains boilerplate code to aid in the creation of a new React app with Redux. Follow the below setup instructions to get started.
+> This repo contains an app designed to display the escape room experience across multiple screens in a professional manner. This app uses ReactJS, ReduxJS, and Firebase
 
 ### Setup Instructions
 
@@ -8,12 +8,12 @@
 > 1. Clone your forked copy of this repo
 >    - `git clone https://github.com/[Your Username]/react_starter.git`
 > 1. Change directory into the newly cloned repo
->    - `cd react_starter`
+>    - `cd escape-digital-signage`
 > 1. Install dependencies 
 >    - `npm install`
 > 1. Start dev server
 >    - `npm start`
-> 1. Open a browser and navigate to `localhost:3000` You should see a page that displays "Welcome to React!"
+> 1. Open a browser and navigate to `localhost:3000` You should see the app.
 
 ### Bundle For Deployment
 
