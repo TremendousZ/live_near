@@ -1,14 +1,24 @@
 import React from 'react';
-import '../assets/css/app.css';
-import logo from '../assets/images/logo.svg';
+import 'materialize-css/dist/css/materialize.min.css';
+import { Route } from 'react-router-dom';
+import Nav from './nav';
+import Home from './home';
+import About from './about';
+import Editor from './editor';
+import Textboards from './textboards';
+
 
 const App = () => (
     <div>
-        <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
+        <Nav />
+        <div className = "container">
+            <Route exact path = "/" component = {Home} />
+            <Route path = "/about" component = {About} />
+            <Route path = "/editor" component = {Editor} />
+            <Route path = "/textboard" component = {Textboards} />
         </div>
     </div>
+
 );
 
 export default App;
