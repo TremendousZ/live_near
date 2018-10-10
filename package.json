@@ -1,7 +1,7 @@
 {
-  "name": "escape_room_digital_signage",
+  "name": "Live-near",
   "version": "1.0.0",
-  "description": "App to display Escape Room experience with ReactJs, ReduxJS, and Firebase",
+  "description": "App to display desired areas to live with ReactJs, ReduxJS, and Firebase",
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
@@ -12,7 +12,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TremendousZ/escape-digital-signage.git"
+    "url": "https://github.com/TremendousZ/live_near.git"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
