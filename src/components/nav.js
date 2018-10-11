@@ -24,13 +24,13 @@ class Nav extends Component {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/about">About</Link>
+                            <Link to="/stores">Stores</Link>
                         </li>
                         <li>
-                            <Link to="/editor">Editor</Link>
+                            <Link to="/activities">Activities</Link>
                         </li>
                         <li>
-                            <Link to="/textboard">Textboards</Link>
+                            <Link to="/housing">Housing</Link>
                         </li>
                         <li>
                             {this.renderAuthButtons()}
