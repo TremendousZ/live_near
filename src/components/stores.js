@@ -8,7 +8,7 @@ class Stores extends Component{
         return (
             <div>
                 <h5 className="center">Pick your favorite 3 stores</h5>
-                <input />
+                <input placeholder="Select a Category" />
                 <div className = "storePillBox">
                         <div className="btn">Whole Foods</div>
                         <div className="btn">Target</div>
