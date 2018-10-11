@@ -3,9 +3,9 @@ import 'materialize-css/dist/css/materialize.min.css';
 import { Route } from 'react-router-dom';
 import Nav from './nav';
 import Home from './home';
-import About from './about';
-import Editor from './editor';
-import Textboards from './textboards';
+import Stores from './stores';
+import Activities from './activities';
+import Housing from './housing';
 
 
 const App = () => (
@@ -13,9 +13,9 @@ const App = () => (
         <Nav />
         <div className = "container">
             <Route exact path = "/" component = {Home} />
-            <Route path = "/about" component = {About} />
-            <Route path = "/editor" component = {Editor} />
-            <Route path = "/textboard" component = {Textboards} />
+            <Route path = "/stores" component = {Stores} />
+            <Route path = "/activities" component = {Activities} />
+            <Route path = "/housing" component = {Housing} />
         </div>
     </div>
 

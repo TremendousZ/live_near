@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Textboards extends Component{
+class Housing extends Component{
     render(){
         return (
             <div>
@@ -11,4 +11,4 @@ class Textboards extends Component{
     }
 }
 
-export default Textboards;
+export default Housing;
