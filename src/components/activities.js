@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
 
 class Activities extends Component{  
+  
     render(){
-        return(
+        return (
             <div>
-                <h1 className="center">Please Enter Your Favorite Activites or Select a few of the provided activities</h1>
-                <form>
-                    <label>Activity Name:</label>
-                    <input/>
-                </form>
-                <div className = "pillbox">
-                    
+                <h5 className="center">Pick your favorite 3 hobbies</h5>
+                <input placeholder="Select a category"/>
+                <div className = "storePillBox">
+                        <div className="btn">Swimming</div>
+                        <div className="btn">Tennis</div>
+                        <div className="btn">Baseball</div>
+                        <div className="btn">Comics</div>
+                        <div className="btn">Football</div>
+                        <div className="btn">Climbing</div>
+                        <div className="btn">Cycling</div>
+                        <div className="btn">Sailing</div>
                 </div>
-            </div>       
-        )
+                <div>
+                    <h5>Your picks:</h5>
+                    <div>
+                        <div className="btn">Hiking</div>
+                        <div className="btn">Camping</div>
+                    </div>
+                </div>
+                <div className="btn green darken-1">NEXT</div>
+            </div>
+        )        
     }
 }
 
