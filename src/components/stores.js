@@ -8,7 +8,18 @@ class Stores extends Component{
         return (
             <div>
                 <h5 className="center">Pick your favorite 3 stores</h5>
-                <input placeholder="Select a Category" />
+                 <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Minimum Amount:
+                        <select name ="minimum">
+                            <option value="200">$200,000</option>
+                            <option value="400">$400,000</option>
+                            <option value="600">$600,000</option>
+                            <option value="800">$800,000</option>
+                            <option value="1000">$1,000,000</option>
+                        </select>
+                    </label>
+                </form>
                 <div className = "storePillBox">
                         <div className="btn">Whole Foods</div>
                         <div className="btn">Target</div>
