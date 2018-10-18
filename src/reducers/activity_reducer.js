@@ -1,13 +1,16 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    state: null,
+    activity: null,
 }
 
 export default ( state = DEFAULT_STATE,action) => {
+    console.log("Activities this.state", state);
     switch(action.type){
-        case types.STATE:
-            return {state: action.state};
+        case types.ACTIVITY:
+            return {
+                activity: action.activity
+            };
         default:
             return state;
     }

@@ -62,7 +62,7 @@ class Activities extends Component{
                         <div className="btn">Swimming</div>
                         <div className="btn">Tennis</div>
                         <div className="btn">Baseball</div>
-                        <div className="btn">Comics</div>
+                        <div className="btn">Cross-Fit</div>
                         <div className="btn">Football</div>
                         <div className="btn">Climbing</div>
                         <div className="btn">Cycling</div>

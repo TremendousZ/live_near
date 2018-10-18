@@ -5,8 +5,15 @@ export const signIn = () => ({type: types.SIGN_IN});
 
 export const signOut = () => ({type: types.SIGN_OUT});
 
-export const zipcode = () => ({type:types.ZIPCODE});
+export const state = (state) => ({
+    type: types.STATE,
+    state
+});
 
-export const city = () => ({type: types.CITY});
-
-export const state = () => ({type: types.STATE});
+export function activity(activity) {
+    console.log("dispatching activity");
+    return {
+        type: types.ACTIVITY,
+        activity 
+    }      
+}
