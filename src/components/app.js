@@ -5,7 +5,7 @@ import Nav from './nav';
 import Home from './home';
 import Stores from './stores';
 import Activities from './activities';
-import Housing from './housing';
+import Answer from './answer';
 
 
 const App = () => (
@@ -15,7 +15,7 @@ const App = () => (
             <Route exact path = "/" component = {Home} />
             <Route path = "/stores" component = {Stores} />
             <Route path = "/activities" component = {Activities} />
-            <Route path = "/housing" component = {Housing} />
+            <Route path = "/answer/:activity/:state" component = {Answer} />
         </div>
     </div>
 

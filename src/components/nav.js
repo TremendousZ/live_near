@@ -30,7 +30,7 @@ class Nav extends Component {
                             <Link to="/activities">Activities</Link>
                         </li>
                         <li>
-                            <Link to="/housing">Housing</Link>
+                            <Link to="/answer">Answer</Link>
                         </li>
                         <li>
                             {this.renderAuthButtons()}
