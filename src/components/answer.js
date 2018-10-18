@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Card from './card';
 
 class Answer extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            
+            topThree: [],
+            state: this.props.match.params.state,
+            activity: this.props.match.params.activity ,
+            cardContainer:'',
         }
+        this.cardContainer = [];
     }
 
     componentDidMount(){
@@ -77,41 +82,70 @@ class Answer extends Component{
                 
             }
         }
-        console.log("Check City Name List", activityLocations);
+        this.rankCityByActivityFrequency(activityLocations);
     }
 
+    rankCityByActivityFrequency(array){
+        console.log("CHECK ARRAY", array);
+        let cityFrequency = {};
+        for ( var index = 0; index < array.length; index ++){
+            let cityName = array[index];
+            if(cityName[cityName.length-1]===","){
+                cityName = cityName.split('');
+                cityName.pop();
+                cityName = cityName.join('');
+            }
+            if(cityFrequency[cityName] == null){
+                cityFrequency[cityName] = 1;
+            } else {
+                cityFrequency[cityName]++;
+            }
+            
+
+        }
+        let topThree = Object.keys(cityFrequency);
+        this.setState({
+            topThree
+        });
+        this.topThreeCities(topThree);
+        console.log("City Frequency", cityFrequency);
+    }
+
+    mathRand(){
+    	return Math.floor(Math.random()*10000)
+    }
+
+    topThreeCities(array){
+        
+        for(var index = 0; index < 3; index++){
+            let temp = <Card key = {this.mathRand()+'o'+index} details = {array[index]} {...this.props} />
+            this.cardContainer.push(temp);
+        }
+        this.setState({
+            cardContainer: this.cardContainer,
+        })
+        // this.weatherCheck(city1,city2,city3,state);
+        // this.getCityInfo(city1,city2,city3,state);
+
+    }
+
+    
 
     render(){
         return (
             <div className = "container">
                 <ul className = "cityList">
-                    <li>city name1 <span>Score: 9.2</span></li>
-                    <li>city name2 <span>Score: 8.2</span></li>
-                    <li>city name3 <span>Score: 7.2</span></li>
-                    <li>city name4 <span>Score: 5.2</span></li>
-                    <li>city name5 <span>Score: 4.2</span></li>
-                    <li>city name6 <span>Score: 3.2</span></li>
-                    <li>city name7 <span>Score: 2.2</span></li>
+                    <li>{this.state.topThree[0]}</li>
+                    <li>{this.state.topThree[1]}</li>
+                    <li>{this.state.topThree[2]}</li>
+                    
                 </ul>
                 <div className = "mapView">Map</div>
 
                 <div className = "statsBox">
                     <div className = "favoriteStoreList">
                         <div>
-                            <p>Store Name <span>True</span></p>
-                            <div>Store Info</div> 
-                        </div>
-                        <div>
-                            <p>Store Name <span>True</span></p>
-                            <div>Store Info</div>  
-                        </div>
-                        <div>
-                            <p>Store Name <span>False</span></p>
-                            <div>No Store here</div>  
-                        </div>
-                        <div>
-                            <p>Store Name <span>True or False</span></p>
-                            <div>No Store here</div>  
+                            {this.state.cardContainer}
                         </div>
                     </div>
                     <div className = "favoriteActivityList">
