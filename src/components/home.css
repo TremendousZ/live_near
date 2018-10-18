@@ -3,3 +3,7 @@
     background-color: darkgrey;
     
 }
+
+select {
+    display: block;
+}

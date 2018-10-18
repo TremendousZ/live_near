@@ -10,7 +10,7 @@ class Home extends Component{
         super(props);
 
         this.state = {
-            state: null,
+            state: "CA",
             activity: "crossfit"
         }
     }
@@ -35,7 +35,7 @@ class Home extends Component{
                     activity: event.target.value
                 });
             break;
-            case "football":
+            case "swimming":
                 this.setState({
                     activity: event.target.value
                 });
@@ -47,7 +47,6 @@ class Home extends Component{
         event.preventDefault();
         const state = this.refs.state.value;
         const activity = this.refs.activity.value;
-        console.log("Name and Activity", state, activity);
         this.props.activity(activity);
         this.props.state(state);
     }
@@ -55,7 +54,11 @@ class Home extends Component{
 
 
     render(){
-        console.log(this.props);
+        console.log("this state",this.state);
+        let {state, activity} = this.state;
+        let stateLowerCase = state.toLowerCase().split(' ').join('');
+        let activityLowerCase = activity.toLowerCase().split(' ').join('');
+        let linkQuery = '/answer' +'/'+ activityLowerCase + '/' + stateLowerCase;
         return (
             <div>
                 <div className="background-logo">
@@ -64,27 +67,23 @@ class Home extends Component{
                 <p>The purpose of this app is to allow you to find nice places to live centered around
                     the grocery chain, Whole Foods, and your favorite activity. 
                 </p>
-                <form onSubmit={this.handleSubmit.bind(this)}>
+                <form onSubmit = {this.handleSubmit.bind(this)}>
                     
                     <label>Please enter a State</label>
-                    <input type="text" ref = "state" placeholder ="State" onChange={this.handleChange.bind(this)} />
+                    <input type="text" ref="state" placeholder ="State" name="state" onChange={this.handleChange.bind(this)} />
                     <select value={this.state.activity} ref = "activity" onChange={this.handleChange.bind(this)}>
                         <option value="crossfit">CrossFit</option>
                         <option value="hiking">Hiking</option>
                         <option value="swimming">Swimming</option>
                     </select>
-                    <Link to="/stores" className  = "btn green darken-2">Submit</Link>
-
-                </form>
-                
-                <p>You search will not be saved until you login</p>   
+                        <Link to={linkQuery} className="btn green darken-2">Submit</Link>
+                </form>  
             </div>   
         );
     }  
 }
 
 function mapStateToProps(state){
-    console.log("home State    :",state);
     return {
         state: state.home.state,
         activity: state.home.activity
