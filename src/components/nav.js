@@ -24,12 +24,6 @@ class Nav extends Component {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/stores">Stores</Link>
-                        </li>
-                        <li>
-                            <Link to="/activities">Activities</Link>
-                        </li>
-                        <li>
                             <Link to="/answer">Answer</Link>
                         </li>
                         <li>
