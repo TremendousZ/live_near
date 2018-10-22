@@ -1,0 +1,29 @@
+.imageContainer img {
+    height:100%;
+    width: 100%;
+}
+
+.card{
+    height: 45vh;
+}
+
+.leftColumn,.rightColumn {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    height:100%;
+    vertical-align: top;
+    position: relative;
+}
+.leftColumn{
+    margin: 2%;
+    width:46%;
+}
+
+.leftColumn p {
+    font-size: 2rem;
+}
+
+.leftColumn p a {
+    font-size: .75rem;
+}

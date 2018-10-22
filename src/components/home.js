@@ -56,8 +56,6 @@ class Home extends Component{
     render(){
         console.log("this state",this.state);
         let {state, activity} = this.state;
-        // let stateLowerCase = state.toLowerCase().split(' ').join('');
-        // let activityLowerCase = activity.toLowerCase().split(' ').join('');
         let linkQuery = '/answer' +'/'+ activity + '/' + state;
         return (
             <div>
