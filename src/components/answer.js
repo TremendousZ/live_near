@@ -11,6 +11,7 @@ class Answer extends Component{
             state: this.props.match.params.state,
             activity: this.props.match.params.activity ,
             cardContainer:'',
+            numberOfActivityMatches: [],
         }
         this.cardContainer = [];
     }
@@ -104,8 +105,11 @@ class Answer extends Component{
 
         }
         let topThree = Object.keys(cityFrequency);
+        let activityHits = Object.values(cityFrequency);
+        console.log("topThree", topThree)
         this.setState({
-            topThree
+            topThree,
+            numberOfActivityMatches: activityHits
         });
         this.topThreeCities(topThree);
         console.log("City Frequency", cityFrequency);
@@ -118,7 +122,7 @@ class Answer extends Component{
     topThreeCities(array){
         
         for(var index = 0; index < 3; index++){
-            let temp = <Card key = {this.mathRand()+'o'+index} details = {array[index]} {...this.props} />
+            let temp = <Card key = {this.mathRand()+'o'+index} details = {array[index]} activityHits={this.state.numberOfActivityMatches[index]} stateName={this.state.state} {...this.props} />
             this.cardContainer.push(temp);
         }
         this.setState({
