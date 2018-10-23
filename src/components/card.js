@@ -19,7 +19,7 @@ class Card extends Component{
     }
 
     async getCurrentWeather(cityName){
-        let openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="+this.props.details+",us&APPID=7467f23f7a5df9a5d65456efecc92ebf&units=imperial";
+        let openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="+this.props.details +",us&APPID=7467f23f7a5df9a5d65456efecc92ebf&units=imperial";
         const resp = await axios.post(openWeatherAPI);
         console.log("Weather Response",resp);
         this.setState({
@@ -67,14 +67,13 @@ class Card extends Component{
                         Current Weather: {this.state.cityWeather}
                         </div>
                     </div>
-                    
-                    
+                    <button className ="btn">Save City</button>   
                 </div>
                 <div className = "rightColumn">
                     <div className = "imageContainer">
                         <img src ={this.state.image_src} />
                     </div>
-                    <button className ="btn">Save City</button>
+                    
                 </div>
             </div>
         )

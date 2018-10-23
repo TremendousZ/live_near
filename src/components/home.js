@@ -58,17 +58,17 @@ class Home extends Component{
         let {state, activity} = this.state;
         let linkQuery = '/answer' +'/'+ activity + '/' + state;
         return (
-            <div>
+            <div className = "homeContainer">
                 <div className="background-logo">
-                    <h1 className="center">Live near</h1>
+                    <div className="center title">Live near</div>
                 </div>
                 <p>The purpose of this app is to allow you to find nice places to live centered around
-                    the grocery chain, Whole Foods, and your favorite activity. 
+                    the grocery chain, Whole Foods, and your favorite activity. To get started, Please select a state and an activity, then click the Submit button to begin.
                 </p>
                 <form onSubmit = {this.handleSubmit.bind(this)}>
                     
-                    <label>Please enter a State</label>
-                    <select value={this.state.state} ref = "state" name="state" onChange={this.handleChange.bind(this)}>
+                    <label className = 'stateSelectLabel'>Please enter a State</label>
+                    <select value={this.state.state} className = "stateSelectInput" ref = "state" name="state" onChange={this.handleChange.bind(this)}>
                         <option value="Alabama">Alabama</option>
                         <option value="Alaska">Alaska</option>
                         <option value="Arizona">Arizona</option>
@@ -120,12 +120,13 @@ class Home extends Component{
                         <option value="Wisconsin">Wisconsin</option>
                         <option value="Wyoming">Wyoming</option>
                     </select>
-                    <select value={this.state.activity} ref = "activity" onChange={this.handleChange.bind(this)}>
+                    <label className = "activitySelectLabel">Please select an activity to search</label>
+                    <select value={this.state.activity} ref = "activity" className ="activityNameInput" onChange={this.handleChange.bind(this)}>
                         <option value="Crossfit">CrossFit</option>
                         <option value="Hiking">Hiking</option>
                         <option value="Swimming">Swimming</option>
                     </select>
-                        <Link to={linkQuery} className="btn green darken-2">Submit</Link>
+                        <Link to={linkQuery} className="submitButton btn green darken-2">Start Your Search!</Link>
                 </form>  
             </div>   
         );
