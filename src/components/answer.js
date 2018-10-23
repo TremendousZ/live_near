@@ -125,7 +125,7 @@ class Answer extends Component{
 
     render(){
         return (
-            <div className = "container">
+            <div>
                 <div className = "statsBox">
                     <div className = "cityCardList">
                         <div>

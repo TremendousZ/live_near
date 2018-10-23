@@ -1,9 +1,34 @@
 
-.background-logo{
-    background-color: darkgrey;
-    
+.homeContainer{
+    margin: 0 5%;
 }
+
+
 
 select {
     display: block;
+}
+
+.title{
+    margin-top:0;
+    font-size: 5rem;
+}
+
+.stateSelectInput,.activityNameInput{
+    position: relative;
+    width:75%;
+    left:50%;
+    transform: translateX(-50%);
+    margin-bottom: 5%;
+
+}
+.stateSelectLabel, .activitySelectLabel {
+    display: block;
+    text-align: center;
+}
+
+.submitButton{
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
 }
