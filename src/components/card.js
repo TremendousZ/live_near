@@ -19,7 +19,9 @@ class Card extends Component{
     }
 
     async getCurrentWeather(cityName){
-        let openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="+this.props.details +",us&APPID=7467f23f7a5df9a5d65456efecc92ebf&units=imperial";
+        let lat = this.props.match.params.lat;
+        let lng = this.props.match.params.lng;
+        let openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lng+"&APPID=7467f23f7a5df9a5d65456efecc92ebf&units=imperial";
         const resp = await axios.post(openWeatherAPI);
         console.log("Weather Response",resp);
         this.setState({
@@ -33,11 +35,17 @@ class Card extends Component{
         
         const resp = await axios.post(cityStateSearchURL);
         console.log("CITY PHOTO???     :",resp);
+        if(resp.data.candidates[0] == undefined){
+            return this.requestPhoto("No Photo");
+        };
         console.log("photo ref string", resp.data.candidates[0].photos[0].photo_reference);
         return this.requestPhoto(resp.data.candidates[0].photos[0].photo_reference);
     }
 
     async requestPhoto(photoRef){
+        if(photoRef == "No Photo"){
+            return;
+        }
         let cityPhotoReferenceURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc"
         const resp = await axios.post(cityPhotoReferenceURL);
         console.log("FIND PHOTO IN HERE",resp);

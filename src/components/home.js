@@ -54,9 +54,8 @@ class Home extends Component{
 
 
     render(){
-        console.log("this state",this.state);
         let {state, activity} = this.state;
-        let linkQuery = '/answer' +'/'+ activity + '/' + state;
+        let linkQuery = '/store' +'/'+ activity + '/' + state;
         return (
             <div className = "homeContainer">
                 <div className="background-logo">

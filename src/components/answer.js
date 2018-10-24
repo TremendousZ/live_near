@@ -9,7 +9,9 @@ class Answer extends Component{
         this.state = {
             topThree: [],
             state: this.props.match.params.state,
-            activity: this.props.match.params.activity ,
+            activity: this.props.match.params.activity,
+            lat: this.props.match.params.lat,
+            lng: this.props.match.params.lng,
             cardContainer:'',
             numberOfActivityMatches: [],
         }
@@ -17,33 +19,17 @@ class Answer extends Component{
     }
 
     componentDidMount(){
-        const { state , activity } = this.props.match.params;
-        this.getWholeFoodsLocation(state, activity);
+        this.getActivityLocations();
     }
 
-    async getWholeFoodsLocation(stateName, activityName){
-        let stateSearchURL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Whole%20Foods%20"+stateName+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc";
-        
-        const resp = await axios.post(stateSearchURL);
-        this.getActivityLocations(resp,activityName)
-    }
 
-    async getActivityLocations(respWF,activityName){
-        let { lat, lng } = respWF.data.candidates[0].geometry.location;
+    async getActivityLocations(){
+        let lat = this.state.lat;
+        let lng = this.state.lng;
         let type;
-            // switch(activityName){
-            //     case "crossfit":
-            //         type = "gym";
-            //     break;
-            //     case "hiking":
-            //         type = "campground";
-            //     break;
-
-            // }
+        let activityName = this.state.activity;
             const resp = await axios.post("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat+","+lng+"&radius=15000&type="+type+"&keyword=" + activityName + "&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc");
-            
             this.storeCityNames(resp);
-
     }
     
     storeCityNames(respAL){
