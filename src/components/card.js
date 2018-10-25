@@ -58,7 +58,7 @@ class Card extends Component{
         let zillowURL = "https://www.zillow.com/homes/for_sale/"+this.props.details+"-"+this.props.stateName+"_rb/"
         let wikipediaURL = "https://en.wikipedia.org/wiki/"+this.props.details+"%2C_"+this.props.stateName;
         return (
-            <div className = "card mainContainer">
+            <div className = "card mainContainer hoverable">
                 <div className = "leftColumn">
                     <p>{this.props.details} <a target="_blank" href={wikipediaURL}>learn more...</a></p>
                     
