@@ -17,7 +17,7 @@ class StoreCard extends Component{
     }
 
     async requestPhoto(photoRef){
-        let cityPhotoReferenceURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc"
+        let cityPhotoReferenceURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photoreference="+photoRef+"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc"
         const resp = await axios.post(cityPhotoReferenceURL);
         this.setState({
             store_image_src: resp.request.responseURL
@@ -30,7 +30,6 @@ class StoreCard extends Component{
 
     priceRating( priceNumber ){
         let price;
-        debugger;
         switch(priceNumber){
             case 0:
             price = "";
@@ -60,14 +59,14 @@ class StoreCard extends Component{
         let linkQuery = this.props.match.url + '/' +this.props.details.geometry.location.lat + '/' + this.props.details.geometry.location.lng;
         console.log("Check the Store Card Props",this.props);
         return(
-        <div className = "card mainContainer">
+        <div className = "card mainContainer hoverable">
             <div className = "leftColumn">
                 <div className ="storeNameTitle">{this.props.details.name}</div>
                 <div>{this.props.details.formatted_address}</div>
                 <div>Price: {this.priceRating(this.props.details.price_level)}</div>
                 <div>Rating: {this.ratingLevel(this.props.details.rating)}</div>
                 
-                <Link className ="btn" to={linkQuery}>Select This Store</Link>   
+                <Link className ="btn selectButton" to={linkQuery}>Select This Store</Link>   
             </div>
             <div className = "rightColumn">
                 <div className = "imageContainer">

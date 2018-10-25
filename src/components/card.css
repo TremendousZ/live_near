@@ -1,13 +1,9 @@
-.imageContainer img {
-    height:auto;
-    width: 75%;
-    margin:5%;
-    float: right;
-}
 
 .card{
     height: 45vh;
+    background-color: wheat;
 }
+
 
 .leftColumn,.rightColumn {
     display: inline-block;
@@ -24,7 +20,7 @@
 
 .leftColumn p {
     font-size: 2rem;
-    margin: 2%;
+    margin: 2% 2% 2% 0%;
 }
 
 .leftColumn p a {
@@ -32,5 +28,5 @@
 }
 
 .saveButton{
-    margin: 5%;
+    margin-top: 5%; 
 }

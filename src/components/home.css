@@ -3,7 +3,13 @@
     margin: 0 5%;
 }
 
-
+.container{
+    background-color: beige;
+    overflow: auto;
+}
+.backgroundContainer{
+    background-position:center;
+}
 
 select {
     display: block;
@@ -11,7 +17,7 @@ select {
 
 .title{
     margin-top:0;
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .stateSelectInput,.activityNameInput, .storeSelectInput{
@@ -31,4 +37,8 @@ select {
     position: relative;
     left:50%;
     transform: translateX(-50%);
+}
+
+.navColor{
+    background-color: forestgreen;
 }

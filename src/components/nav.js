@@ -16,7 +16,7 @@ class Nav extends Component {
 
     render(){
         return (
-            <nav className = "blue">
+            <nav className = "navColor">
                 <div className="nav-wrapper">
                     <Link to='/'></Link>
                     <ul>
