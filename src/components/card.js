@@ -75,7 +75,7 @@ class Card extends Component{
                         Current Weather: {this.state.cityWeather}
                         </div>
                     </div>
-                    <button className ="btn">Save City</button>   
+                    <button className ="btn saveButton">Save City</button>   
                 </div>
                 <div className = "rightColumn">
                     <div className = "imageContainer">

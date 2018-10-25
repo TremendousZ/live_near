@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import "./store_card.css";
 
 class StoreCard extends Component{
     constructor(props){
@@ -18,7 +19,6 @@ class StoreCard extends Component{
     async requestPhoto(photoRef){
         let cityPhotoReferenceURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc"
         const resp = await axios.post(cityPhotoReferenceURL);
-        console.log("FIND PHOTO IN HERE",resp);
         this.setState({
             store_image_src: resp.request.responseURL
         })
@@ -28,14 +28,45 @@ class StoreCard extends Component{
         console.log(event);
     }
 
+    priceRating( priceNumber ){
+        let price;
+        debugger;
+        switch(priceNumber){
+            case 0:
+            price = "";
+            break;
+            case 1:
+            price = "$";
+            break;
+            case 2:
+            price = "$$";
+            break;
+            case 3:
+            price = "$$$";
+            break;
+            case 4:
+            price = "$$$$";
+            break;
+        }   
+        return price;
+    }
+
+    ratingLevel( ratingNumber){
+        let rating = ratingNumber + " / 5 Stars"; 
+        return rating;
+    }
+
     render(){
         let linkQuery = this.props.match.url + '/' +this.props.details.geometry.location.lat + '/' + this.props.details.geometry.location.lng;
         console.log("Check the Store Card Props",this.props);
         return(
         <div className = "card mainContainer">
             <div className = "leftColumn">
-                <div>{this.props.details.name}</div>
-                <div>Store Address: {this.props.details.formatted_address}</div>
+                <div className ="storeNameTitle">{this.props.details.name}</div>
+                <div>{this.props.details.formatted_address}</div>
+                <div>Price: {this.priceRating(this.props.details.price_level)}</div>
+                <div>Rating: {this.ratingLevel(this.props.details.rating)}</div>
+                
                 <Link className ="btn" to={linkQuery}>Select This Store</Link>   
             </div>
             <div className = "rightColumn">

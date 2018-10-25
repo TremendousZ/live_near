@@ -33,6 +33,7 @@ class Answer extends Component{
     }
     
     storeCityNames(respAL){
+        
         let activityLocations = [];
         let activityLocationList = respAL.data.results;
         for (let index = 0; index < activityLocationList.length; index++){
@@ -66,6 +67,7 @@ class Answer extends Component{
     }
 
     rankCityByActivityFrequency(array){
+        console.log("Check The Cities Here",array);
         let cityFrequency = {};
         for ( var index = 0; index < array.length; index ++){
             let cityName = array[index];
@@ -97,7 +99,7 @@ class Answer extends Component{
 
     topThreeCities(array){
         
-        for(var index = 0; index < 3; index++){
+        for(var index = 0; index < array.length; index++){
             let temp = <Card key = {this.mathRand()+'o'+index} details = {array[index]} activityHits={this.state.numberOfActivityMatches[index]} stateName={this.state.state} {...this.props} />
             this.cardContainer.push(temp);
         }
