@@ -11,13 +11,23 @@ class Home extends Component{
 
         this.state = {
             state: "Alabama",
-            activity: "crossfit"
+            activity: "Crossfit",
+            store: "Whole_Foods"
         }
     }
 
     handleChange(event){
-        console.log("EVENT",event);
-        debugger;
+        switch(event.target.name){
+            case "store":
+                this.setState({
+                    store: event.target.value
+                });
+                break;
+            case "state":
+                this.setState({
+                    state:event.target.value
+                })
+        }
 
         switch(event.target.value){
             case "Crossfit":
@@ -35,10 +45,6 @@ class Home extends Component{
                     activity: event.target.value
                 });
             break;
-            default:
-                this.setState({
-                    state: event.target.value
-                })
            
         }
     }
@@ -47,15 +53,17 @@ class Home extends Component{
         event.preventDefault();
         const state = this.refs.state.value;
         const activity = this.refs.activity.value;
+        const store = this.refs.store.value;
         this.props.activity(activity);
         this.props.state(state);
+        this.props.store(store)
     }
 
 
 
     render(){
-        let {state, activity} = this.state;
-        let linkQuery = '/store' +'/'+ activity + '/' + state;
+        let {state, activity, store} = this.state;
+        let linkQuery = '/' + store +'/'+ activity + '/' + state;
         return (
             <div className = "homeContainer">
                 <div className="background-logo">
@@ -65,7 +73,12 @@ class Home extends Component{
                     the grocery chain, Whole Foods, and your favorite activity. To get started, Please select a state and an activity, then click the Submit button to begin.
                 </p>
                 <form onSubmit = {this.handleSubmit.bind(this)}>
-                    
+                    <label className = "storeSelectLabel">Please select a store</label>
+                    <select value={this.state.store} className = "storeSelectInput" ref = "store" name="store" onChange={this.handleChange.bind(this)}>
+                        <option value = "Whole_Foods">Whole Foods</option>
+                        <option value = "Target">Target</option>
+                        <option value = "Walmart">Walmart</option>
+                    </select>
                     <label className = 'stateSelectLabel'>Please enter a State</label>
                     <select value={this.state.state} className = "stateSelectInput" ref = "state" name="state" onChange={this.handleChange.bind(this)}>
                         <option value="Alabama">Alabama</option>

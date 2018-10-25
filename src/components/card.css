@@ -24,8 +24,13 @@
 
 .leftColumn p {
     font-size: 2rem;
+    margin: 2%;
 }
 
 .leftColumn p a {
     font-size: .75rem;
+}
+
+.saveButton{
+    margin: 5%;
 }

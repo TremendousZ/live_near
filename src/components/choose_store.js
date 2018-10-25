@@ -9,15 +9,17 @@ class ChooseStore extends Component{
             storeCardContainer:'',
             activity:'',
             state:'',
+            store:'',
         }
         this.storeCardContainer=[];
     }
     componentDidMount(){
-        const {state, activity} = this.props.match.params;
-        this.getWholeFoodsLocation(state);
+        const {state, activity, store} = this.props.match.params;
+        this.getStoreLocation(state);
         this.setState({
             activity,
-            state
+            state,
+            store
         });
     }
 
@@ -25,18 +27,14 @@ class ChooseStore extends Component{
     	return Math.floor(Math.random()*10000)
     }
 
-    async getWholeFoodsLocation(stateName){
-        let stateSearchURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=wholefoods+in+" + stateName +"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc";
+    async getStoreLocation(stateName){
+        let stateSearchURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+this.props.match.params.store+"+in+" + stateName +"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc";
         const resp = await axios.post(stateSearchURL);
-        console.log("check this response", resp);
         this.populateStoreList( resp );
     }
 
     populateStoreList( responseObj ){
         for(var index = 0; index < responseObj.data.results.length; index++){
-            let photoRef = responseObj.data.results[index].photos[0].photo_reference;
-            let locationObj = responseObj.data.results[index].geometry.location;
-            let streetAddress = responseObj.data.results[index].formatted_address;
             let temp = <StoreCard key = {this.mathRand()+'o'+index} details = {responseObj.data.results[index]} {...this.props} />
             this.storeCardContainer.push(temp);
         }

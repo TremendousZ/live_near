@@ -14,7 +14,7 @@ select {
     font-size: 5rem;
 }
 
-.stateSelectInput,.activityNameInput{
+.stateSelectInput,.activityNameInput, .storeSelectInput{
     position: relative;
     width:75%;
     left:50%;
@@ -22,7 +22,7 @@ select {
     margin-bottom: 5%;
 
 }
-.stateSelectLabel, .activitySelectLabel {
+.stateSelectLabel, .activitySelectLabel, .storeSelectLabel {
     display: block;
     text-align: center;
 }
