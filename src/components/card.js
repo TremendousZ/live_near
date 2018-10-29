@@ -1,44 +1,74 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import "./card.css";
+import { db } from "../firebase";
+
 
 class Card extends Component{
+    dbRef = db.ref('/cities');
     constructor(props){
         super(props);
         this.state = {
             cityTemp: '',
             cityWeather: '',
-            image_src:''
+            image_src:'',
+            userId:"",
+            cityCard: {
+                name:"",
+                state:"",
+                temp:"",
+                weather:"",
+                activityHits:"",
+                activityName:"",
+            }
         }
         
     }
     componentDidMount(){
         this.getCurrentWeather(this.props.details);
-        this.getCityPhotoReference(this.props.details,this.props.stateName)
-        
+        this.getCityPhotoReference(this.props.details,this.props.stateName);
+        if(!this.props.childData){
+            this.setState({
+                cityCard: {
+                    name: this.props.details,
+                    state: this.props.stateName,
+                    temp: this.state.cityTemp,
+                    weather: this.state.cityWeather,
+                    activityHits: this.props.activityHits,
+                    activity: this.props.match.params.activity
+            }
+        })
+    } else {
+        this.setState({
+            cityCard: {
+                name: this.props.details,
+                state: this.props.stateName,
+                temp: this.state.cityTemp,
+                weather: this.state.cityWeather,
+                activityHits: this.props.activityHits,
+                
+        }
+    })
     }
+}
 
     async getCurrentWeather(cityName){
         let lat = this.props.match.params.lat;
         let lng = this.props.match.params.lng;
         let openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lng+"&APPID=7467f23f7a5df9a5d65456efecc92ebf&units=imperial";
         const resp = await axios.post(openWeatherAPI);
-        console.log("Weather Response",resp);
         this.setState({
             cityTemp: resp.data.main.temp,
             cityWeather: resp.data.weather[0].main
         })
     }
     async getCityPhotoReference(cityName,stateName){
-        console.log("STATE NAME     :",stateName);
         let cityStateSearchURL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+cityName+"%20"+stateName+"&inputtype=textquery&fields=photos&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc";
         
         const resp = await axios.post(cityStateSearchURL);
-        console.log("CITY PHOTO???     :",resp);
         if(resp.data.candidates[0] == undefined){
             return this.requestPhoto("No Photo");
         };
-        console.log("photo ref string", resp.data.candidates[0].photos[0].photo_reference);
         return this.requestPhoto(resp.data.candidates[0].photos[0].photo_reference);
     }
 
@@ -48,13 +78,31 @@ class Card extends Component{
         }
         let cityPhotoReferenceURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoRef+"&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc"
         const resp = await axios.post(cityPhotoReferenceURL);
-        console.log("FIND PHOTO IN HERE",resp);
         this.setState({
             image_src: resp.request.responseURL
         })
     }
+
+    // handleClick(){
+        
+    //     this.dbRef.on('value',(snapshot)=>{
+    //         console.log(" DB Values", snapshot.val());
+    //     });
+    
+    // }
+    saveCity = async () =>{
+        const newCity= {
+                    cityCard: this.state.cityCard
+                }   
+        await this.dbRef.push(newCity);
+    }
+
+    
+
+    componentWillUnmount(){
+        this.dbRef.off();
+    }
     render(){
-        console.log("Check these Props",this.props);
         let zillowURL = "https://www.zillow.com/homes/for_sale/"+this.props.details+"-"+this.props.stateName+"_rb/"
         let wikipediaURL = "https://en.wikipedia.org/wiki/"+this.props.details+"%2C_"+this.props.stateName;
         return (
@@ -75,7 +123,7 @@ class Card extends Component{
                         Current Weather: {this.state.cityWeather}
                         </div>
                     </div>
-                    <button className ="btn saveButton">Save City</button>   
+                    <button className ="btn saveButton" onClick={this.saveCity.bind(this)}>Save City</button>   
                 </div>
                 <div className = "rightColumn">
                     <div className = "imageContainer">
@@ -87,5 +135,7 @@ class Card extends Component{
         )
     }
 }
+
+
 
 export default Card;

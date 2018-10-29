@@ -17,3 +17,10 @@ export function activity(activity) {
         activity 
     }      
 }
+
+export function updateSavedCities(cityLog){
+    return {
+        type: types.UPDATE_SAVED_CITIES,
+        payload: cityLog
+    }
+}

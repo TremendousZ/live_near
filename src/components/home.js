@@ -16,6 +16,23 @@ class Home extends Component{
         }
     }
 
+    componentDidMount(){
+        this.checkLocalStorageForUserId();
+    }
+
+    checkLocalStorageForUserId(){
+        let userId = localStorage.getItem("userId");
+        if(userId == null){
+            let newUserId = this.generateUserId();
+            localStorage.setItem("userId", newUserId);
+        }
+    }
+
+    generateUserId(){
+        let userIdNumber = Math.random() * 100;
+        return userIdNumber;
+        }
+
     handleChange(event){
         switch(event.target.name){
             case "store":

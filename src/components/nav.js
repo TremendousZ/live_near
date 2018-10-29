@@ -24,7 +24,7 @@ class Nav extends Component {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/answer">Answer</Link>
+                            <Link to="/saved_cities">Saved Cities</Link>
                         </li>
                         <li>
                             {this.renderAuthButtons()}
