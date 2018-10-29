@@ -7,9 +7,6 @@
     background-color: beige;
     overflow: auto;
 }
-.backgroundContainer{
-    background-position:center;
-}
 
 select {
     display: block;

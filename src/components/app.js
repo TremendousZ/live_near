@@ -6,6 +6,7 @@ import Home from './home';
 import HouseImage from "../assets/images/breno-assis-517356-unsplash_opt.jpg"
 import ChooseStore from './choose_store';
 import Answer from './answer';
+import SavedCities from './saved_cities';
 
 
 const App = () => (
@@ -15,7 +16,8 @@ const App = () => (
             <div className = "container" style={{height:'100%'}}>
                 <Route exact path = "/" component = {Home} />
                 <Route exact path = "/:store/:activity/:state" component = {ChooseStore} />
-                <Route path = "/:store/:activity/:state/:lat/:lng" component = {Answer} />
+                <Route exact path = "/:store/:activity/:state/:lat/:lng" component = {Answer} />
+                <Route path = "/saved_cities" component = {SavedCities} />
             </div>
         </div>
     </div>

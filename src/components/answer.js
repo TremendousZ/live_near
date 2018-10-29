@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Card from './card';
+import {Link} from "react-router-dom";
+import SavedCities from "./saved_cities";
 
 class Answer extends Component{
     constructor(props){
@@ -12,6 +14,7 @@ class Answer extends Component{
             activity: this.props.match.params.activity,
             lat: this.props.match.params.lat,
             lng: this.props.match.params.lng,
+            store: this.props.match.params.store,
             cardContainer:'',
             numberOfActivityMatches: [],
         }
@@ -112,6 +115,7 @@ class Answer extends Component{
     
 
     render(){
+        console.log("WORKING CARD CONTAINER ", this.state.cardContainer);
         return (
             <div>
                 <div className = "statsBox">
@@ -120,6 +124,7 @@ class Answer extends Component{
                             {this.state.cardContainer}
                         </div>
                     </div>
+                    <Link to='/saved-cities' className = 'btn'>See Your Saved Cities</Link>
                 </div>
             </div>
         )
