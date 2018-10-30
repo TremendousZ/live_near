@@ -15,6 +15,7 @@ class Answer extends Component{
             lat: this.props.match.params.lat,
             lng: this.props.match.params.lng,
             store: this.props.match.params.store,
+            stateAbbr: "",
             cardContainer:'',
             numberOfActivityMatches: [],
         }
@@ -23,8 +24,266 @@ class Answer extends Component{
 
     componentDidMount(){
         this.getActivityLocations();
+        this.createStateAbbreviation(this.state.state);
     }
 
+    createStateAbbreviation(stateName){
+        switch (stateName.toUpperCase())
+            {
+                case "ALABAMA":
+                    return this.setState({
+                        stateAbbr:"AL",
+                    })
+                break;
+                case "ALASKA":
+                return this.setState({
+                    stateAbbr:"AK",
+                });
+                break;
+                
+                case "ARIZONA":
+                return this.setState({
+                    stateAbbr:"AZ",
+                })
+                break;
+                case "ARKANSAS":
+                return this.setState({
+                    stateAbbr:"AR",
+                })
+                break;
+                case "CALIFORNIA":
+                return this.setState({
+                    stateAbbr:"CA",
+                })
+                break;
+                case "COLORADO":
+                return this.setState({
+                    stateAbbr:"CO",
+                })
+                break;
+                case "CONNECTICUT":
+                return this.setState({
+                    stateAbbr:"CT",
+                })
+                break;
+                case "DELAWARE":
+                return this.setState({
+                    stateAbbr:"DE",
+                })
+                break;
+                case "FLORIDA":
+                return this.setState({
+                    stateAbbr:"FL",
+                })
+                break;
+                case "GEORGIA":
+                return this.setState({
+                    stateAbbr:"GA",
+                })
+                break;
+                case "HAWAII":
+                return this.setState({
+                    stateAbbr:"HI",
+                })
+                break;
+                case "IDAHO":
+                return this.setState({
+                    stateAbbr:"ID",
+                })
+                break;
+                case "ILLINOIS":
+                return this.setState({
+                    stateAbbr:"IL",
+                })
+                break;
+                case "INDIANA":
+                return this.setState({
+                    stateAbbr:"IN",
+                })
+                break;
+                case "IOWA":
+                return this.setState({
+                    stateAbbr:"IA",
+                })
+                break;
+                case "KANSAS":
+                return this.setState({
+                    stateAbbr:"KS",
+                })
+                break;
+                case "KENTUCKY":
+                return this.setState({
+                    stateAbbr:"KY",
+                })
+                break;
+                case "LOUISIANA":
+                return this.setState({
+                    stateAbbr:"LA",
+                })
+                break;
+                case "MAINE":
+                return this.setState({
+                    stateAbbr:"ME",
+                })
+                break;
+                case "MARYLAND":
+                return this.setState({
+                    stateAbbr:"MD",
+                })
+                break;
+                case "MASSACHUSETTS":
+                return this.setState({
+                    stateAbbr:"MA",
+                })
+                break;
+                case "MICHIGAN":
+                return this.setState({
+                    stateAbbr:"MI",
+                })
+                break;
+                case "MINNESOTA":
+                return this.setState({
+                    stateAbbr:"MN",
+                })
+                break;
+                case "MISSISSIPPI":
+                return this.setState({
+                    stateAbbr:"MS",
+                })
+                break;
+                case "MISSOURI":
+                return this.setState({
+                    stateAbbr:"MO",
+                })
+                break;
+                case "MONTANA":
+                return this.setState({
+                    stateAbbr:"MT",
+                })
+                break;
+                case "NEBRASKA":
+                return this.setState({
+                    stateAbbr:"NE",
+                })
+                break;
+                case "NEVADA":
+                return this.setState({
+                    stateAbbr:"NV",
+                })
+                break;
+                case "NEW_HAMPSHIRE":
+                return this.setState({
+                    stateAbbr:"NH",
+                })
+                break;
+                case "NEW_JERSEY":
+                return this.setState({
+                    stateAbbr:"NJ",
+                })
+                break;
+                case "NEW_MEXICO":
+                return this.setState({
+                    stateAbbr:"NM",
+                })
+                break;
+                case "NEW_YORK":
+                return this.setState({
+                    stateAbbr:"NY",
+                })
+                break;
+                case "NORTH_CAROLINA":
+                return this.setState({
+                    stateAbbr:"NC",
+                })
+                break;
+                case "NORTH_DAKOTA":
+                return this.setState({
+                    stateAbbr:"ND",
+                })
+                break;
+                case "OHIO":
+                return this.setState({
+                    stateAbbr:"OH",
+                })
+                break;
+                case "OKLAHOMA":
+                return this.setState({
+                    stateAbbr:"OK",
+                })
+                break;
+                case "OREGON":
+                return this.setState({
+                    stateAbbr:"OR",
+                })
+                break;
+                case "PENNSYLVANIA":
+                return this.setState({
+                    stateAbbr:"PA",
+                })
+                break;
+                case "RHODE_ISLAND":
+                return this.setState({
+                    stateAbbr:"RI",
+                })
+                break;
+                case "SOUTH_CAROLINA":
+                return this.setState({
+                    stateAbbr:"SC",
+                })
+                break;
+                case "SOUTH_DAKOTA":
+                return this.setState({
+                    stateAbbr:"SD",
+                })
+                break;
+                case "TENNESSEE":
+                return this.setState({
+                    stateAbbr:"TN",
+                })
+                break;
+                case "TEXAS":
+                return this.setState({
+                    stateAbbr:"TX",
+                })
+                break;
+                case "UTAH":
+                return this.setState({
+                    stateAbbr:"UT",
+                })
+                break;
+                case "VERMONT":
+                return this.setState({
+                    stateAbbr:"VT",
+                })
+                break;
+                case "VIRGINIA":
+                return this.setState({
+                    stateAbbr:"VA",
+                })
+                break;
+                case "WASHINGTON":
+                return this.setState({
+                    stateAbbr:"WA",
+                })
+                break;
+                case "WEST_VIRGINIA":
+                return this.setState({
+                    stateAbbr:"WV",
+                })
+                break;
+                case "WISCONSIN":
+                return this.setState({
+                    stateAbbr:"WI",
+                })
+                break;
+                case "WYOMING":
+                return this.setState({
+                    stateAbbr:"WY",
+                })
+                break;
+            }
+
+    }
 
     async getActivityLocations(){
         let lat = this.state.lat;
@@ -34,9 +293,10 @@ class Answer extends Component{
             const resp = await axios.post("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat+","+lng+"&radius=15000&type="+type+"&keyword=" + activityName + "&key=AIzaSyD-NNZfs0n53D0caUB0M_ERLC2n9psGZfc");
             this.storeCityNames(resp);
     }
+
     
     storeCityNames(respAL){
-        
+        console.log("Find the store names here", respAL);
         let activityLocations = [];
         let activityLocationList = respAL.data.results;
         for (let index = 0; index < activityLocationList.length; index++){
@@ -70,7 +330,6 @@ class Answer extends Component{
     }
 
     rankCityByActivityFrequency(array){
-        console.log("Check The Cities Here",array);
         let cityFrequency = {};
         for ( var index = 0; index < array.length; index ++){
             let cityName = array[index];
@@ -103,7 +362,7 @@ class Answer extends Component{
     topThreeCities(array){
         
         for(var index = 0; index < array.length; index++){
-            let temp = <Card key = {this.mathRand()+'o'+index} details = {array[index]} activityHits={this.state.numberOfActivityMatches[index]} stateName={this.state.state} {...this.props} />
+            let temp = <Card key = {this.mathRand()+'o'+index} details = {array[index]} activityHits={this.state.numberOfActivityMatches[index]} stateName={this.state.state} stateAbbr={this.state.stateAbbr} activityName = {this.state.activity} {...this.props} />
             this.cardContainer.push(temp);
         }
         this.setState({
@@ -115,7 +374,6 @@ class Answer extends Component{
     
 
     render(){
-        console.log("WORKING CARD CONTAINER ", this.state.cardContainer);
         return (
             <div>
                 <div className = "statsBox">
@@ -124,7 +382,7 @@ class Answer extends Component{
                             {this.state.cardContainer}
                         </div>
                     </div>
-                    <Link to='/saved-cities' className = 'btn'>See Your Saved Cities</Link>
+                    <Link to='/saved-cities' className = 'btn goToSavedButton'>See Your Saved Cities</Link>
                 </div>
             </div>
         )
