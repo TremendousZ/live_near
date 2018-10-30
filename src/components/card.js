@@ -10,9 +10,11 @@ class Card extends Component{
         super(props);
         this.state = {
             cityTemp: '',
+            stateAbbr: "",
             cityWeather: '',
             image_src:'',
             userId:"",
+            cityDescription:"",
             cityCard: {
                 name:"",
                 state:"",
@@ -27,6 +29,7 @@ class Card extends Component{
     componentDidMount(){
         this.getCurrentWeather(this.props.details);
         this.getCityPhotoReference(this.props.details,this.props.stateName);
+        this.getCityData();
         if(!this.props.childData){
             this.setState({
                 cityCard: {
@@ -51,6 +54,27 @@ class Card extends Component{
     })
     }
 }
+
+    async getCityData(){
+        let cityDataURL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles="+this.props.details+"%2C_"+this.props.stateName;
+        const resp = await axios.get(cityDataURL);
+        this.populateCityInfo(resp);
+    }
+
+    populateCityInfo(response){
+        let cityDescriptionPage = Object.keys(response.data.query.pages);
+        let cityPageNumber = parseFloat(cityDescriptionPage[0]);
+        if(cityDescriptionPage == "-1"){
+            this.setState({
+                cityDescription: "No information provided"
+            })
+        } else {
+            let cityExtract = response.data.query.pages[cityPageNumber].extract;
+            this.setState({
+                cityDescription: cityExtract
+            })
+        }
+    }
 
     async getCurrentWeather(cityName){
         let lat = this.props.match.params.lat;
@@ -83,21 +107,12 @@ class Card extends Component{
         })
     }
 
-    // handleClick(){
-        
-    //     this.dbRef.on('value',(snapshot)=>{
-    //         console.log(" DB Values", snapshot.val());
-    //     });
-    
-    // }
     saveCity = async () =>{
         const newCity= {
                     cityCard: this.state.cityCard
                 }   
         await this.dbRef.push(newCity);
     }
-
-    
 
     componentWillUnmount(){
         this.dbRef.off();
@@ -109,21 +124,18 @@ class Card extends Component{
             <div className = "card mainContainer hoverable">
                 <div className = "leftColumn">
                     <p>{this.props.details} <a target="_blank" href={wikipediaURL}>learn more...</a></p>
-                    
-                    <div>
-                        Number of Activity Hits : {this.props.activityHits}
-                    </div>
-                    <div>
-                        Distance from Whole Foods: <span>XX miles</span>
-                    </div>
-                    <a target="_blank" href={zillowURL}>See houses in {this.props.details}</a>
-                    <div>
-                        Current Temperature: {this.state.cityTemp}&deg;F
-                        <div>
-                        Current Weather: {this.state.cityWeather}
+                        <div className = "weather">
+                            {this.state.cityTemp}&deg;F {this.state.cityWeather}
                         </div>
+                    <div>
+                        {this.props.activityName} Matches : {this.props.activityHits}
                     </div>
-                    <button className ="btn saveButton" onClick={this.saveCity.bind(this)}>Save City</button>   
+                    <div className = "cityWikipediaDescription">
+                        {this.state.cityDescription}
+                    </div>
+                    
+                    <button className ="btn saveButton" onClick={this.saveCity.bind(this)}>Save City</button>  
+                    <a target="_blank" className = "housingLink" href={zillowURL}>See houses in {this.props.details}</a> 
                 </div>
                 <div className = "rightColumn">
                     <div className = "imageContainer">

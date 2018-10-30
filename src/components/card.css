@@ -29,4 +29,32 @@
 
 .saveButton{
     margin-top: 5%; 
+    width:20%;
+}
+.loadButton, .goToSavedButton{
+    margin: 5% auto;
+    display: block;
+    width:20%;
+}
+
+.cityWikipediaDescription{
+    display: block;
+    height:46%;
+    width:95%;
+    overflow:auto;
+}
+
+.leftColumn > p {
+    display: inline;
+}
+
+.weather {
+    display: inline;
+    float: right;
+}
+
+.housingLink{
+    position: absolute;
+    bottom: 10%;
+    right: 0%;
 }

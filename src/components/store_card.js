@@ -57,7 +57,6 @@ class StoreCard extends Component{
 
     render(){
         let linkQuery = this.props.match.url + '/' +this.props.details.geometry.location.lat + '/' + this.props.details.geometry.location.lng;
-        console.log("Check the Store Card Props",this.props);
         return(
         <div className = "card mainContainer hoverable">
             <div className = "leftColumn">
