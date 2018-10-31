@@ -4,6 +4,7 @@ import "./card.css";
 import { db } from "../firebase";
 
 
+
 class Card extends Component{
     dbRef = db.ref('/cities');
     constructor(props){
@@ -12,6 +13,7 @@ class Card extends Component{
             cityTemp: '',
             stateAbbr: "",
             cityWeather: '',
+            weatherIcon:"",
             image_src:'',
             userId:"",
             cityDescription:"",
@@ -81,9 +83,12 @@ class Card extends Component{
         let lng = this.props.match.params.lng;
         let openWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lng+"&APPID=7467f23f7a5df9a5d65456efecc92ebf&units=imperial";
         const resp = await axios.post(openWeatherAPI);
+        let weatherIcon = resp.data.weather[0].icon;
+        let iconSrc = "http://openweathermap.org/img/w/"+weatherIcon+".png";
         this.setState({
             cityTemp: resp.data.main.temp,
-            cityWeather: resp.data.weather[0].main
+            cityWeather: resp.data.weather[0].main,
+            weatherIcon: iconSrc
         })
     }
     async getCityPhotoReference(cityName,stateName){
@@ -125,10 +130,12 @@ class Card extends Component{
                 <div className = "leftColumn">
                     <p>{this.props.details} <a target="_blank" href={wikipediaURL}>learn more...</a></p>
                         <div className = "weather">
-                            {this.state.cityTemp}&deg;F {this.state.cityWeather}
+                            <div>{this.state.cityTemp}&deg;F</div> 
+                            <img src={this.state.weatherIcon} />
                         </div>
+                        
                     <div>
-                        {this.props.activityName} Matches : {this.props.activityHits}
+                        {this.props.activityName} Matches : {this.props.activityHits} Names: {this.props.storeList.join(", ")}
                     </div>
                     <div className = "cityWikipediaDescription">
                         {this.state.cityDescription}

@@ -49,8 +49,11 @@
 }
 
 .weather {
-    display: inline;
+    display: flex;
     float: right;
+}
+.weather > div{
+    align-self: center;
 }
 
 .housingLink{
