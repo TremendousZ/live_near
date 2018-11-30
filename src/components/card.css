@@ -4,6 +4,11 @@
     background-color: wheat;
 }
 
+.store-instructions{
+    margin: 2% 0%;
+    text-align: center;
+    font-size: 1.5rem;
+}
 
 .leftColumn,.rightColumn {
     display: inline-block;
@@ -14,13 +19,14 @@
     position: relative;
 }
 .leftColumn{
-    margin: 2%;
+    margin: 1% 2% 2% 2%;
     width:46%;
+
 }
 
 .leftColumn p {
     font-size: 2rem;
-    margin: 2% 2% 2% 0%;
+    margin: 1% 2% 2% 0%;
 }
 
 .leftColumn p a {
@@ -28,8 +34,9 @@
 }
 
 .saveButton{
-    margin-top: 5%; 
-    width:20%;
+    position: absolute; 
+    width:40%;
+    bottom:10%;
 }
 .loadButton, .goToSavedButton{
     margin: 5% auto;
@@ -37,11 +44,19 @@
     width:20%;
 }
 
+.activityMatches{
+    height: 14%;
+    width: 100%;
+    overflow: auto;
+    background: tan;
+}
+
 .cityWikipediaDescription{
     display: block;
     height:46%;
     width:95%;
     overflow:auto;
+    padding: 3%;
 }
 
 .leftColumn > p {

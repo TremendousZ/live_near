@@ -48,7 +48,7 @@ class ChooseStore extends Component{
         return (
             <div>
                 <div className = "storeSelectionBox">
-                <div>Select a store that you would like to search by</div>
+                <div className = "store-instructions">Select a store that you would like to search nearby</div>
                     <div>
                         {this.state.storeCardContainer}
                     </div>

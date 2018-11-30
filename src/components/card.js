@@ -134,7 +134,7 @@ class Card extends Component{
                             <img src={this.state.weatherIcon} />
                         </div>
                         
-                    <div>
+                    <div className = "activityMatches">
                         {this.props.activityName} Matches : {this.props.activityHits} Names: {this.props.storeList.join(", ")}
                     </div>
                     <div className = "cityWikipediaDescription">
