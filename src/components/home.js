@@ -73,7 +73,7 @@ class Home extends Component{
         const store = this.refs.store.value;
         this.props.activity(activity);
         this.props.state(state);
-        this.props.store(store)
+        this.props.store(store);
     }
 
 
@@ -163,6 +163,7 @@ class Home extends Component{
 }
 
 function mapStateToProps(state){
+    console.log("THIS REDUX STATE ", state);
     return {
         state: state.home.state,
         activity: state.home.activity

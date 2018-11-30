@@ -1,7 +1,7 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    activity: null,
+    activity: "crossfit",
 }
 
 export default ( state = DEFAULT_STATE,action) => {
