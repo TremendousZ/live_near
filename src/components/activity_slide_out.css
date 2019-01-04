@@ -1,0 +1,14 @@
+.slide-out{
+    height:100%;
+    width:100%;
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(200, 200, 200, 0.5);
+    font-size: 1.75rem;
+}
+
+.matches-count, .matches-names{
+    padding: 2% 2%;
+    
+}
+

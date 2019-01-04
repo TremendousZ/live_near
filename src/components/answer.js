@@ -17,6 +17,8 @@ class Answer extends Component{
             store: this.props.match.params.store,
             cardContainer:'',
             numberOfActivityMatches: [],
+            weather_lat:"",
+            weather_lng:""
         }
         this.cardContainer = [];
     }
@@ -36,6 +38,7 @@ class Answer extends Component{
     }
     
     storeCityNames(respAL){
+        console.log("response obj", respAL);
         //Make an empty array to store wnted information
         let activityLocations = [];
         //Save array of matching activity objects
@@ -49,7 +52,9 @@ class Answer extends Component{
                 let cityName = cityPlusCode.split(' ');
                 activityLocations.push({
                     cityName:cityName[cityName.length-1],
-                    storeName
+                    storeName,
+                    store_lat:respAL.data.results[index].geometry.location.lat,
+                    store_lng:respAL.data.results[index].geometry.location.lng,
                 })
             } else {
                 cityPlusCode = activityLocationList[index].plus_code.compound_code;
@@ -59,7 +64,9 @@ class Answer extends Component{
                     case 3:
                         activityLocations.push({
                             cityName:cityName[1],
-                            storeName
+                            storeName,
+                            store_lat:respAL.data.results[index].geometry.location.lat,
+                            store_lng:respAL.data.results[index].geometry.location.lng,
                         }
                             );
                     break;
@@ -67,14 +74,18 @@ class Answer extends Component{
                         cityMultipleWords = cityName[1] + " " + cityName[2];
                         activityLocations.push({
                             cityName:cityMultipleWords,
-                            storeName
+                            storeName,
+                            store_lat:respAL.data.results[index].geometry.location.lat,
+                            store_lng:respAL.data.results[index].geometry.location.lng,
                         });
                     break;
                     case 5:
                         cityMultipleWords = cityName[1] + " " + cityName[2] + " " + cityName[3];
                         activityLocations.push({
                             cityName:cityMultipleWords,
-                            storeName
+                            storeName,
+                            store_lat:respAL.data.results[index].geometry.location.lat,
+                            store_lng:respAL.data.results[index].geometry.location.lng,
                         });
                     break;
                 }
@@ -86,9 +97,13 @@ class Answer extends Component{
 
     rankCityByActivityFrequency(array){
         console.log("New array of objects", array);
+        
         let cityFrequency = {};
         let storeList = [];
         for ( var index = 0; index < array.length; index ++){
+            
+            let weather_lat = array[index].store_lat;
+            let weather_lng = array[index].store_lng;
             let cityName = array[index].cityName;
             let storeName = array[index].storeName;
             if(cityName[cityName.length-1]===","){
@@ -102,7 +117,7 @@ class Answer extends Component{
                 cityFrequency[cityName]++;
             }
 
-            storeList.push({cityName,storeName});
+            storeList.push({cityName,storeName,weather_lat,weather_lng});
         
         }
         let topThree = Object.keys(cityFrequency);
@@ -125,10 +140,10 @@ class Answer extends Component{
             let cityStoreList = [];
             for(let storeIndex = 0; storeIndex < storeArray.length; storeIndex++){
                 if(cityArray[index] === storeArray[storeIndex].cityName){
-                    cityStoreList.push(storeArray[storeIndex].storeName);
+                    cityStoreList.push(storeArray[storeIndex].storeName, storeArray[storeIndex].weather_lat,storeArray[storeIndex].weather_lng);
                 }
             }
-            let temp = <Card key = {this.mathRand()+'o'+index} details = {cityArray[index]} activityHits={this.state.numberOfActivityMatches[index]} stateName={this.state.state}  storeList = {cityStoreList} {...this.props} />
+            let temp = <Card key = {this.mathRand()+'o'+index} details = {cityArray[index]} activityHits={this.state.numberOfActivityMatches[index]} stateName={this.state.state}  storeList = {cityStoreList} lat={this.state.weather_lat} lng={this.state.weather_lng} {...this.props} />
             this.cardContainer.push(temp);
         }
         this.setState({
@@ -140,7 +155,6 @@ class Answer extends Component{
     
 
     render(){
-        console.log("WORKING CARD CONTAINER ", this.state.cardContainer);
         return (
             <div>
                 <div className = "statsBox">
