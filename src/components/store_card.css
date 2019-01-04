@@ -1,6 +1,11 @@
 .storeNameTitle{
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 0% 2% 2% 2%;
+}
+
+.leftColumn div:nth-child(2),.leftColumn div:nth-child(3),.leftColumn div:nth-child(4){
+    margin: 0% 2% 0% 2%;
+    font-size: 1.75rem;
 }
 
 .imageContainer{
@@ -20,5 +25,5 @@
 }
 
 .selectButton{
-    margin-top: 15%;
+    margin-top: 5%;
 }

@@ -86,8 +86,8 @@ class Home extends Component{
                 <div className="background-logo">
                     <div className="center title">Live near</div>
                 </div>
-                <p>The purpose of this app is to allow you to find nice places to live centered around
-                    the grocery chain, Whole Foods, and your favorite activity. To get started, Please select a state and an activity, then click the Submit button to begin.
+                <p>The original purpose of this app is to allow you to find nice places to live centered around
+                    the grocery chain, Whole Foods, and your favorite activity. I have since added Walmart and Target to add some variety to the store selection. Please feel free to recommend your favorite stores! To get started, Please select a state and an activity, then <b>click the Start Your Search button.</b>
                 </p>
                 <form onSubmit = {this.handleSubmit.bind(this)}>
                     <label className = "storeSelectLabel">Please select a store</label>

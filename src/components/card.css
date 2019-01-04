@@ -25,12 +25,15 @@
 }
 
 .leftColumn p {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin: 1% 2% 2% 0%;
 }
 
 .leftColumn p a {
     font-size: .75rem;
+}
+#city-name{
+    font-size:2.5rem;
 }
 
 .saveButton{
@@ -45,10 +48,8 @@
 }
 
 .activityMatches{
-    height: 14%;
-    width: 100%;
-    overflow: auto;
-    background: tan;
+    color:green;
+    cursor: pointer;
 }
 
 .cityWikipediaDescription{
@@ -57,6 +58,8 @@
     width:95%;
     overflow:auto;
     padding: 3%;
+    background-color: peru;
+    border: 2px inset brown;
 }
 
 .leftColumn > p {
@@ -75,4 +78,32 @@
     position: absolute;
     bottom: 10%;
     right: 0%;
+}
+
+.slide-enter {
+    transform: translateX(-100%);
+    transition: .5s cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-enter.slide-enter-active {
+    transform: translateX(0%);
+  }
+
+.slide-leave {
+    transform: translateX(0%);
+    transition: .5s ease-in-out;
+}
+
+.slide-leave.slide-leave-active {
+    transform: translateX(-100%);
+}
+
+.imageContainer{
+    position: relative;
+}
+.imageContainer img{
+    position: absolute;
+    z-index: -1;
+    top:0;
+    left:0;
 }
